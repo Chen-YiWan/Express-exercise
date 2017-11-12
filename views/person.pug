@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title= person.name
+    body
+        h1= person.name
+        form(method="post" enctype="multipart/form-data")
+            div
+                label(for="name") 名字
+                input(type="text" name="name" value=person.name)
+            div
+                label(for="phone") 電話
+                input(type="text" name="phone" value=person.phone)
+            div
+                label(for="age") 年紀
+                input(type="tel" name="age" value=person.age)
+            div(style="height:200px;width:200px;border:1px solid #aaa;")
+                img#img(src=person.photo?'/uploads/'+person.photo:'' height="200" alt="大頭照預覽")
+            div
+                input(type="file" accept="image/*" name="photo" onchange="previewFile()")
+            
+            div
+                button(style="font-size:14px;" type="submit") 儲存
+                if success
+                    b(style='margin-left:5px;') 成功
+    
+        script.
+            function previewFile() {
+                var preview = document.querySelector('#img');
+                var file    = document.querySelector('input[type=file]').files[0];
+                var reader  = new FileReader();
+
+                reader.addEventListener("load", function () {
+                    preview.src = reader.result;
+                }, false);
+
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            }
