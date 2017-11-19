@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title 輸入驗證碼
+    body
+        h1 輸入驗證碼
+        form(method="post")
+            div
+                label(for="code") 驗證碼
+                input(type="tel" name="code" required minlength="4")
+            div
+                button(style="font-size:14px;" type="submit") 送出
+                
+                if error
+                    b(style='margin-left:5px;color:red;')= error
+
+
+    

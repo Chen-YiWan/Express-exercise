@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title 登入與註冊
+    body
+        h1 登入與註冊
+        form(method="post")
+            input#form-type(type="hidden" name="type" value="login")
+            input#submit(type="submit" style="display: none;")
+            div
+                label(for="email") Email
+                input(type="email" name="email" required value=email)
+            div
+                label(for="password") 密碼
+                input(type="password" name="password" required minlength="6")
+            div
+                button(style="font-size:14px;" type="button" onclick="login()") 登入
+                button(style="font-size:14px;" type="button" onclick="register()") 註冊
+                
+                if error
+                    b(style='margin-left:5px;color:red;')= error
+
+        script.
+            var formType = document.getElementById('form-type')
+            var submit = document.getElementById('submit')
+            var form = document.querySelector('form')
+
+            function login() {
+                formType.value = 'login'
+                submit.click();
+                //- form.submit()
+            }
+
+            function register() {
+                formType.value = 'register'
+                submit.click();
+                //- form.submit()
+            }
+
+    
