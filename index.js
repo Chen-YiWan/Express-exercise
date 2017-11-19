@@ -70,9 +70,9 @@ app.get('/login', function(req, res) {
         Person.create({
             email: sessionEmail,
             password: sessionPassword,
-        }).then(response => {
+        }).then(user => {
             req.session.login = true;
-            // res.session.userId = user.id
+            req.session.userId = user.id;
             res.redirect('/');                
         })
     }else{
